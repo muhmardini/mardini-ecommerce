@@ -1,16 +1,16 @@
 import { useProduct } from "../../hooks/useProduct";
 import { ProductCard } from "../Global/ProductCard";
-import type { product } from "../../Sections/Home/FeatureProducts";
+import type { Product } from "../../Sections/Home/FeatureProducts";
 
 type secInfo = {
     headline: string,
-    prod: product[]
+    prod: Product[]
 }
 const HomeProducts = () => {
   const { data = [], isLoading } = useProduct(); // using a custom hook inside it a useQuery to let me use the response across the project
-  const newArrivalsProducts: product[] = data.slice(0, 12);
-  const offersProducts: product[] = data.slice(13, 28);
-  const bestSellProducts: product[] = data.slice(20, 150);
+  const newArrivalsProducts: Product[] = data.slice(0, 12);
+  const offersProducts: Product[] = data.slice(13, 28);
+  const bestSellProducts: Product[] = data.slice(20, 150);
   console.log("New Arrivals",newArrivalsProducts,"------------");
   console.log("offers",offersProducts,"-----------");
   console.log("best sell",bestSellProducts,"--------------");
