@@ -12,7 +12,7 @@ export const Header = () =>{
             <div className="flex justify-between items-center gap-2 ">
                 <img className="w-10" src="./public/icons/MardiniLogo.svg" alt="website logo"/>
                 <h2 className="text-gradient">Mardini</h2>
-            </div>f
+            </div>
             <nav className="">
                 <ul className="flex gap-10 items-center transition-all">
                     <li><NavLink to="/" className={navClass}>Home</NavLink></li>
