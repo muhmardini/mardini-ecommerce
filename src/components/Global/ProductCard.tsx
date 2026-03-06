@@ -2,6 +2,7 @@ import { faCartShopping, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import type { Product } from "../../Sections/Home/FeatureProducts";
 import {motion} from 'motion/react'
+import { useCart } from "../../stores/store";
 type productsData = { 
   data: Product;
   location: string;
@@ -23,6 +24,7 @@ const item2 = {
   visible: {opacity: 1},
 }
 export const ProductCard = ({ data, location }: productsData) => {
+  const addItem = useCart((state) => state.addItem)
   console.log("data from prod card", data, "--------------");
   if (!data) return null;
   else {
@@ -132,6 +134,7 @@ export const ProductCard = ({ data, location }: productsData) => {
                   <FontAwesomeIcon
                     className="hover:text-primary transition-colors"
                     icon={faCartShopping}
+                    onClick={() => addItem(data)}
                   />
                 </button>
               </div>

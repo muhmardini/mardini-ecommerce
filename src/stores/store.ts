@@ -2,13 +2,16 @@ import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import type { Product } from "../Sections/Home/FeatureProducts";
 
-type cartItem = {
+export type CartItem = {
   product: Product;
   quantity: number;
 };
 export const useCart = create<{
-  items: cartItem[];
-  totalPrice: number;
+  items: CartItem[];
+  delivery: boolean;
+  tip: number;
+  setTip: (value: number) => void
+  setDelivery: () => void;
   addItem: (product: Product) => void;
   removeItem: (productId: number) => void;
   inc: (productId: number) => void;
@@ -17,7 +20,14 @@ export const useCart = create<{
 }>()(
   immer((set) => ({
     items: [],
-    totalPrice: 0,
+    delivery: true,
+    tip: 0,
+    setTip: (value) => set((state) => {
+      state.tip = value;
+    }),
+    setDelivery: () => set((state) => {
+      state.delivery = !state.delivery
+    }),
     addItem: (product) =>
       set((state) => {
         const item = state.items.find((i) => i.product.id === product.id);
