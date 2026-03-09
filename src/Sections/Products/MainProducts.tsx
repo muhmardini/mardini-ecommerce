@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useProduct } from "../../hooks/useProduct";
 import { ProductCard } from "../../components/Global/ProductCard";
-import type { product } from "../Home/FeatureProducts";
+import type { Product } from "../Home/FeatureProducts";
 import NoProducts from "../../components/Products/NoProducts";
 import {NavLink, useLocation} from 'react-router-dom'
 import { motion } from "motion/react";
@@ -35,7 +35,7 @@ const MainProducts = () => {
     fragrances: false,
     groceries: false,
   });
-  const filteredProducts: product[] = data.filter((e: product) => {
+  const filteredProducts: Product[] = data.filter((e: Product) => {
     const category = e.category as CategoryKey;
     return isChecked[category] === true;
   });
@@ -252,7 +252,7 @@ const MainProducts = () => {
       <div className="mt-6">
         <h1>Recommended Products</h1>
         <div className="flex h-50 gap-6 justify-center mt-10">
-          {data.slice(6,10).map((e:product)=>(
+          {data.slice(6,10).map((e:Product)=>(
             <NavLink className="" to="/SingleProduct"><ProductCard key={e.id} location={location.pathname+"Recommended"} data={e} /></NavLink>
           ))}
         </div>

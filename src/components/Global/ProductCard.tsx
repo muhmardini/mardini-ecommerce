@@ -79,6 +79,7 @@ export const ProductCard = ({ data, location }: productsData) => {
                   <FontAwesomeIcon
                     className="hover:text-primary transition-colors"
                     icon={faCartShopping}
+                    onClick={() => addItem(data)}
                   />
                 </button>
               </div>
@@ -191,7 +192,7 @@ export const ProductCard = ({ data, location }: productsData) => {
                 <p>${data.price}</p>
               </div>
               <div className="flex justify-around mt-4 w-full">
-                <button className="btn-primary btn" type="button">
+                <button className="btn-primary btn" onClick={() => addItem(data)} type="button">
                   Add to Cart
                 </button>
                 <button className="btn btn-background" type="button">

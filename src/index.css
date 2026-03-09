@@ -74,6 +74,7 @@ button:focus-visible {
   --color-basic: #333333;
   --color-subColor: #999999;
   --color-background: #E3E8E7;
+  --color-subBackground: rgba(217,217,217,0.28);
   --color-gradient: linear-gradient(90deg, #2EC4B6 0%, #E3E8E7 100%);
   --font-primary: 'Mandali', sans-serif;
   /* --color-gradient-start: #2EC4B6;
@@ -81,6 +82,11 @@ button:focus-visible {
   --color-gradient-end: #E3E8E7; */
   /* --gradient: linearGradient */
   
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 @layer base {
   body {

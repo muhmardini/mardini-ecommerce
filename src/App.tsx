@@ -12,6 +12,8 @@ import { Contact } from './pages/Contact'
 import { Favorite } from './pages/Favorite'
 import Footer from './Sections/Global/Footer'
 import SingleProduct from './pages/SingleProduct'
+import Checkout from './pages/Checkout'
+import ScrollToTop from './components/Global/ScrollToTop'
 
 function App() {
   const client = new QueryClient();
@@ -19,6 +21,7 @@ function App() {
     <div className="App">
       <QueryClientProvider client={client}>
         <Router>
+          <ScrollToTop />
           <Header />
           <Routes>
             <Route path='/' element={<Home/>}/>
@@ -28,6 +31,7 @@ function App() {
             <Route path='/Contact' element={<Contact/>}/>
             <Route path='/Favorite' element={<Favorite/>}/>
             <Route path='/singleProduct' element={<SingleProduct/>} />
+            <Route path='/checkout' element={<Checkout />} />
           </Routes>
           <Footer/>
         </Router>
