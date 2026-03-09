@@ -1,4 +1,3 @@
-import React from "react";
 import CartElement from "../components/Cart/CartElement";
 import { useCart } from "../stores/store";
 import { useLocation } from "react-router-dom";

@@ -232,9 +232,9 @@ const MainProducts = () => {
             {isLoading ? (
               <h1>Loading...</h1> // change it to spinner
             ) : ( filteredProducts.length > 0 ? (
-              filteredProducts.map((e: product) => (
+              filteredProducts.map((e: Product) => (
                 <ProductCard key={e.id} location={location.pathname} data={e} />
-              )).slice(0,showedProducts)) : (noItems  ?(<NoProducts />):(data.map((e: product) => (
+              )).slice(0,showedProducts)) : (noItems  ?(<NoProducts />):(data.map((e: Product) => (
                 <ProductCard key={e.id} location={location.pathname} data={e} />
               )).slice(0,showedProducts)))
             )}
