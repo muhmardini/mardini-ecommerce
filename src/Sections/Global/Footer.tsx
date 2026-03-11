@@ -66,12 +66,12 @@ const Footer = () => {
           <form className="flex flex-col items-center w-full" onSubmit={formik.handleSubmit}>
             <h1 className="text-subColor text-center">Reach Out To Us</h1>
             <div className="field flex flex-col mt-6">
-              <label htmlFor="email" className="text-subColor">Your Email</label>
+              <label htmlFor="footer-email" className="text-subColor">Your Email</label>
               <input
               className="border border-subColor rounded-4xl w-120 bg-basic text-subColor h-10 mt-2 pl-4 "
-              id="email"
+              id="footer-email"
               type="email"
-              name="email"
+              name="footer-email"
               value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -80,10 +80,10 @@ const Footer = () => {
               {formik.errors.email && formik.touched.email && formik.errors.email}
             </div>
             <div className="field flex flex-col mt-6">
-              <label htmlFor="message" className="text-subColor">Your Message</label>
+              <label htmlFor="footer-message" className="text-subColor">Your Message</label>
               <textarea
               className="border border-subColor rounded-4xl w-120 bg-basic text-subColor h-50 mt-2 pl-5 pt-3 resize-none"
-              id="message"
+              id="footer-message"
               name="message"
               value={formik.values.message}
               onChange={formik.handleChange}

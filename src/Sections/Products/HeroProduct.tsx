@@ -1,6 +1,6 @@
 const HeroProduct = () => {
   return (
-    <section className='pt-24 background-gradient flex h-screen'>
+    <section className='py-24 background-gradient flex h-screen'>
         <div className='flex-1 pl-8'>
             <h1 className='text-5xl w-[80%] pt-6'>Lightweight sneakers with a breathable mesh upper and cushioned sole, designed for all-day comfort and easy movement. Perfect for running, walking, or casual wear.</h1>
             <div className='flex gap-12 mt-16 ml-10'>

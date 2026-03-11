@@ -64,12 +64,13 @@ const formSchema = z
   });
 
 type FormFields = z.infer<typeof formSchema>;
-// use zod in the form and continue the whole form with react-hook-form and zod
+// add the products to the localstorage so when refresh it won't be gone
 
 const PaymentForm = () => {
   const items = useCart((state) => state.items)
   const tip = useCart((state) => state.tip)
   const itemsCount = useCart((state) => state.itemsCount)
+  const clear = useCart((state) => state.clear)
   const total = items.reduce((result, item) => (
     result += item.product.price * item.quantity
   ),0)
@@ -82,6 +83,7 @@ const PaymentForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     setError,
     formState: { errors, isSubmitting },
   } = useForm<FormFields>({
@@ -91,13 +93,24 @@ const PaymentForm = () => {
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       console.log(data);
+      reset();
+      clear();
     } catch {
-      setError("email", {
+      setError("cardNumber", {
         type: "manual",
         message: "invalid card Number",
       });
     }
+    // add a pop up window for showing that the order has been submitted and clear the cart when everything works
   };
+  const handleShowCardNum = (e:React.FocusEvent<HTMLInputElement>) => {
+    const cardNumInput = e.currentTarget;
+    cardNumInput.type = 'text'
+  }
+  const handleHideCardNum = (e:React.FocusEvent<HTMLInputElement>) => {
+    const cardNumInput = e.currentTarget;
+    cardNumInput.type = 'password'
+  }
   return (
     <form
       className="w-[40%] flex flex-col justify-start items-start px-20"
@@ -106,7 +119,7 @@ const PaymentForm = () => {
       <h1 className="text-center self-center">Payment Details</h1>
       <label
         className="flex flex-col w-full gap-2 py-6"
-        htmlFor="card-holder-email"
+        htmlFor="payment-email"
       >
         Email Address
         <div className="relative w-full">
@@ -116,6 +129,7 @@ const PaymentForm = () => {
           />
           <input
             {...register("email")}
+            id="payment-email"
             type="email"
             className="border border-subColor rounded-2xl bg-subBackground px-2 pl-10 w-full h-8 text-md text-secondary"
             placeholder="Your Email"
@@ -132,7 +146,10 @@ const PaymentForm = () => {
               className="absolute left-3 top-4 -translate-y-1/2 text-xl text-subColor"
             />
             <input
+              id="cardNum"
               {...register("cardNumber")}
+              onFocus={handleShowCardNum}
+              onBlur={handleHideCardNum}
               type="text"
               className="border border-subColor rounded-2xl bg-subBackground px-2 pl-10 w-full h-8 text-md rounded-b-none rounded-tr-none text-secondary"
               placeholder="Card Number"
@@ -140,6 +157,8 @@ const PaymentForm = () => {
             <select
               {...register("paymentMethod")}
               className="bg-subBackground border border-subColor h-8 rounded-tr-2xl text-center text-subColor w-[40%]"
+              id="card-type"
+              name="card-type"
             >
               <option defaultChecked value="visa">
                 Visa
@@ -163,7 +182,7 @@ const PaymentForm = () => {
             />
             <input
               {...register("cvv")}
-              type="text"
+              type="password"
               className="border border-subColor rounded-br-2xl bg-subBackground px-2 text-center w-[55%] h-8 text-md text-secondary"
               placeholder="CVC/CVV"
             />
@@ -180,7 +199,7 @@ const PaymentForm = () => {
         )}
         {errors.cvv && <p className="text-red-500">{errors.cvv.message}</p>}
       </label>
-      <label htmlFor="card-holder" className="flex flex-col gap-2 w-full pb-6">
+      <label className="flex flex-col gap-2 w-full pb-6">
         Card Holder
         <div className="relative">
           <FontAwesomeIcon
@@ -211,7 +230,6 @@ const PaymentForm = () => {
       </label>
       <label
         className="flex flex-col gap-2 w-full pb-6"
-        htmlFor="billing-address"
       >
         Billing Address
         <div className="w-full">
@@ -267,5 +285,7 @@ const PaymentForm = () => {
     </form>
   );
 };
+// add a pop up when submitting is successful
+
 
 export default PaymentForm;
