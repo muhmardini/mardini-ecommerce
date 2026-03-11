@@ -21,7 +21,7 @@
     "axios": "^1.13.2",
     "formik": "^2.4.9",
     "immer": "^11.1.4",
-    "motion": "^12.29.2",
+    "motion": "^12.35.2",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-hook-form": "^7.71.2",

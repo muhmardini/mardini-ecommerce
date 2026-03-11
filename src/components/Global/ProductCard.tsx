@@ -9,11 +9,11 @@ type productsData = {
 };
 const container = {
   hidden: { opacity: 0 , y:20 },
-  visible: {opacity: 1,y: 0 ,transition: { staggerChildren: 0.2 } },
+  visible: {opacity: 1,y: 0 ,transition: { staggerChildren: 0.2} },
 }
 const container2 = {
   hidden: { opacity: 0 , x:20 },
-  visible: {opacity: 1,x: 0 ,transition: { staggerChildren: 0.2 } },
+  visible: {opacity: 1,x: 0 ,transition: { staggerChildren: 0.2} ,},
 }
 const item = {
   hidden: {opacity: 0},
@@ -30,7 +30,7 @@ export const ProductCard = ({ data, location }: productsData) => {
   else {
     if (location.toLowerCase() === "/") {
       return (
-        <motion.div variants={container2} layout initial="hidden" animate="visible" className="min-w-60 border border-b-basic p-1 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer">
+        <motion.div variants={container2} viewport={{once:true, amount: 0.6}} layout initial="hidden" whileInView="visible" className="min-w-60 border border-b-basic p-1 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer">
           <motion.div variants={item2}>
             <img
               src={
@@ -89,7 +89,7 @@ export const ProductCard = ({ data, location }: productsData) => {
       );
     } else if (location.toLowerCase() === "/products") {
       return (
-        <motion.div variants={container} initial="hidden" animate="visible" className="w-60 border border-b-basic p-1 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer">
+        <motion.div variants={container} viewport={{once: true, amount: 0.2}} initial="hidden" whileInView="visible" exit="hidden" className="w-60 border border-b-basic p-1 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer">
           <motion.div variants={item}>
             <img
               src={
@@ -154,7 +154,7 @@ export const ProductCard = ({ data, location }: productsData) => {
       );
     }else if(location.toLowerCase() === "/productsrecommended"){
       return (
-        <motion.div variants={container2} layout initial="hidden" animate="visible" className="w-80 border border-b-basic p-2 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer h-90">
+        <motion.div variants={container2} viewport={{once: true, amount:0.6}} layout initial="hidden" whileInView="visible" className="w-80 border border-b-basic p-2 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer h-90">
           <motion.div variants={item2} className="h-[50%]">
             <img
               src={
