@@ -1,7 +1,9 @@
-import React from "react";
-import type { colors } from "../../pages/SingleProduct";
 
-const Colors = ({prop}:colors) => {
+type Colors = {
+  prop: string
+}
+
+const Colors = ({prop}:Colors) => {
   return (
     <div className={"w-6 h-6 border rounded-full flex justify-center items-center " + prop}>
     </div>

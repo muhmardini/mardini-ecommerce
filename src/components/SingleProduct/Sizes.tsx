@@ -1,7 +1,8 @@
-import React from "react";
-import type { sizes } from "../../pages/SingleProduct";
+type Sizes = {
+  prop: number
+}
 
-const Sizes = ({ prop }: sizes) => {
+const Sizes = ({ prop }: Sizes) => {
   return (
     <div
       style={{

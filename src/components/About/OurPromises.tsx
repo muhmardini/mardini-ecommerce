@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Promises = ['High Quality', 'Modern Design', 'Long-lasting Performance', 'Safe Materials', 'Great value for the price']
 
 const OurPromises = () => {
