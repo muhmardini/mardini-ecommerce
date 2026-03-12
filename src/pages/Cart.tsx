@@ -62,7 +62,7 @@ export const Cart = () => {
                 </tbody>
               </table>
           </div>
-          <div className="md:w-px md:h-[50vh] w-[50vh] h-px bg-basic mt-10 mx-12 self-center"></div>
+          <div className="md:w-px md:h-[50vh] w-3/4 h-px bg-basic mt-10 mx-12 self-center"></div>
           <div className="flex-1 md:px-14 px-4 flex flex-col shadow-2xl rounded-lg py-4 border border-subColor">
             <h2 className="text-center text-secondary">Your Order</h2>
             <div className="flex justify-between py-2 mt-4 border-b">

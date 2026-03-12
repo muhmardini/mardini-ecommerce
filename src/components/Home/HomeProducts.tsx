@@ -34,7 +34,7 @@ const HomeProducts = () => {
       {headlines.map((e) => (
         <>
           <h2 className="text-primary my-5">{e.headline}</h2>
-          <div className="flex overflow-x-scroll w-full gap-8 overflow-y-visible py-4">
+          <div className="flex overflow-x-scroll w-full gap-4 overflow-y-visible py-4">
             {isLoading ? (
               <h2>Loading...</h2>
             ) : (

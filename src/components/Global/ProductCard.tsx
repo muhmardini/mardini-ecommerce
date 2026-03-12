@@ -30,7 +30,7 @@ export const ProductCard = ({ data, location }: productsData) => {
   else {
     if (location.toLowerCase() === "/") {
       return (
-        <motion.div variants={container2} viewport={{once:true, amount: 0.001}} layout initial="hidden" whileInView="visible" className="min-w-60 border border-b-basic p-1 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer">
+        <motion.div variants={container2} viewport={{once:true, amount: 0}} layout initial="hidden" whileInView="visible" className="min-w-60 border border-b-basic p-1 rounded-2xl flex flex-col ml-2 transform-scale cursor-pointer">
           <motion.div variants={item2}>
             <img
               src={
