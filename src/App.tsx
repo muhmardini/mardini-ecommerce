@@ -8,7 +8,7 @@ import AnimatedRoutes from './components/Global/Animation/AnimatedRoutes'
 function App() {
   const client = new QueryClient();
   return (
-    <div className="App">
+    <div className="App pt-10">
       <QueryClientProvider client={client}>
         <Router>
           <ScrollToTop />

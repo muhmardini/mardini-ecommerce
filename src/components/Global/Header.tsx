@@ -21,7 +21,7 @@ export const Header = () => {
   const [dark, setDark] = useState(localStorage.getItem("theme")?true:false);
   const themeRef = useRef(null);
   return (
-    <header className="flex justify-between items-center px-10 py-5 bg-secondary rounded-b-3xl fixed w-full top-0 left-0 z-50 transition-discrete">
+    <header className="flex justify-between items-center px-10 md:py-5 py-3 bg-secondary rounded-b-3xl fixed w-full top-0 left-0 z-50 transition-discrete">
       <div className="flex gap-4">
         <button
           onClick={() => setOpenNav(!openNav)}
@@ -35,7 +35,7 @@ export const Header = () => {
           <Link className="flex justify-between items-center gap-2 transition" to="/">
             <img
               className="md:w-10 w-8"
-              src="./public/icons/MardiniLogo.svg"
+              src="/icons/MardiniLogo.svg"
               alt="website logo"
             />
             <h2 className="text-gradient">Mardini</h2>
