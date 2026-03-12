@@ -7,7 +7,7 @@ export const About = () => {
   return (
     <main className="py-24 items-center gap-8 px-6 flex flex-col">
       <h1 className="text-secondary">About us</h1>
-      <div className="flex justify-around gap-14">
+      <div className="flex md:flex-row flex-col justify-around gap-14">
         <div className="border rounded-2xl shadow-2xl flex flex-col items-center py-8 px-6 gap-4 flex-1">
           <h2 className="text-secondary">Who are we?</h2>
           <div>
@@ -36,22 +36,22 @@ export const About = () => {
           </div>
         </div>
       </div>
-      <div className="border rounded-2xl shadow-2xl w-4/5 flex flex-col items-center py-8 px-6 gap-4">
+      <div className="border rounded-2xl shadow-2xl w-full md:w-4/5 flex flex-col items-center py-8 px-6 gap-4">
         <h2 className="text-secondary">Our Promises</h2>
         <p className="text-center">We provide a carefully curated selection of products chosen for</p>
         <OurPromises />
       </div>
-      <div className="border rounded-2xl shadow-2xl w-4/5 flex flex-col items-center py-8 px-6 gap-4">
+      <div className="border rounded-2xl shadow-2xl w-full md:w-4/5 flex flex-col items-center py-8 px-6 gap-4">
         <h2>Why Customers Choose Us</h2>
         <ChooseUs />
       </div>
-      <div className="border rounded-2xl shadow-2xl w-4/5 flex flex-col items-center py-8 px-6 gap-8">
+      <div className="border rounded-2xl shadow-2xl md:w-4/5 flex flex-col items-center py-8 px-6 gap-8 w-full">
         <h2>What Our Customers Say?</h2>
         <Testimonials />
       </div>
-      <div className="border rounded-2xl shadow-2xl w-4/5 flex flex-col items-center py-8 px-6 gap-4">
+      <div className="border rounded-2xl shadow-2xl w-full md:w-4/5 flex flex-col items-center py-8 px-6 gap-4">
         <h2>Our Commitment To You</h2>
-        <h3>
+        <h3 className="text-center">
           Your trust means everything to us. That's why we stand behind every
           product we offer with
         </h3>
@@ -60,3 +60,4 @@ export const About = () => {
     </main>
   );
 };
+// make every section have a photo or a motion design or illustration fits it.

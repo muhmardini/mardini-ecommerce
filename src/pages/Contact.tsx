@@ -60,8 +60,8 @@ export const Contact = () => {
     <>
       <main className="py-24">
         <h1 className="text-center">Contact Us</h1>
-        <div className="flex justify-between px-6 w-full pt-8">
-          <div className="flex-1 flex flex-col items-center gap-8">
+        <div className="flex md:flex-row flex-col justify-between px-6 w-full pt-8 gap-y-8">
+          <div className="flex-1 flex flex-col items-center gap-8 border md:border-0 shadow-2xl rounded-2xl py-4">
             <h2 className="text-secondary">Get In Touch</h2>
             <p className="text-center w-1/2">
               We’re always happy to hear from you! Whether you have a question
@@ -69,7 +69,7 @@ export const Contact = () => {
               Mardini team is here to help.
             </p>
             <h2 className="text-secondary">Direct Contact & Social Media</h2>
-            <div className="flex flex-wrap gap-x-6 gap-y-4 w-1/3">
+            <div className="md:flex md:flex-wrap grid grid-cols-4 gap-x-6 gap-y-4 md:w-1/3">
               <a
                 href="mailto:mardinimuh@gmail.com"
                 className="size-10 bg-secondary rounded-full flex justify-center items-center group hover:bg-primary transition duration-300"
@@ -173,11 +173,11 @@ export const Contact = () => {
               your time and look forward to assisting you!
             </p>
           </div>
-          <div className="w-px bg-basic text-center"></div>
+          <div className="md:w-px h-px bg-basic text-center"></div>
           <div className="flex-1 flex justify-center">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="bg-secondary px-8 py-8 w-10/12 flex flex-col items-center gap-6 rounded-3xl shadow-2xl"
+              className="bg-secondary px-8 py-8 md:w-10/12 w-full flex flex-col items-center gap-6 rounded-3xl shadow-2xl"
             >
               <h1 className="text-center text-primary">Reaching out To us</h1>
               <div className="flex flex-col gap-6 w-full">

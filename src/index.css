@@ -96,13 +96,13 @@ input[type="number"]::-webkit-inner-spin-button {
     @apply font-primary scroll-smooth m-0 p-0 box-content;
   }
   h1{
-    @apply text-[32px] tracking-wide;
+    @apply md:text-[32px] text-2xl tracking-wide;
   }
   h2{
-    @apply text-[24px] tracking-wide;
+    @apply md:text-[24px] text-[20px] tracking-wide;
   }
   h3{
-    @apply text-[16px] tracking-wide;
+    @apply md:text-lg text-[16px] tracking-wide;
   }
   p{
     @apply text-[12px] tracking-normal;

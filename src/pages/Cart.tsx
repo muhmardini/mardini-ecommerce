@@ -38,31 +38,31 @@ export const Cart = () => {
     <>
       <main className="py-22 px-12">
         <h1 className="text-center text-secondary">My Cart</h1>
-        <div className="flex justify-around mt-8">
-          <div className="flex-2 overflow-y-scroll h-[80vh]">
+        <div className="flex md:flex-row flex-col justify-around mt-8 gap-12">
+            <div className="md:flex-2 overflow-scroll md:overflow-x-visible md:overflow-y-scroll h-[80vh]">
             <h2 className="text-secondary">Cart Info</h2>
-            <table>
-              <thead className="border-b sticky top-0 bg-white">
-                <tr>
-                  <th className="w-1/2">Products</th>
-                  <th className="W-1/4">Price</th>
-                  <th className="w-1/4">Quantity</th>
-                  <th className="w-[20%]">Total</th>
-                  <th className="w-[10%]"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {items.map((item) => (
-                  <CartElement
-                    location={location.pathname}
-                    {...item}
-                    key={item.product.id}
-                  />
-                ))}
-              </tbody>
-            </table>
+              <table className="w-200 md:w-full">
+                <thead className="border-b sticky top-0 bg-white">
+                  <tr>
+                    <th className="w-1/2">Products</th>
+                    <th className="W-1/4">Price</th>
+                    <th className="w-1/4">Quantity</th>
+                    <th className="w-[20%]">Total</th>
+                    <th className="w-[10%]"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item) => (
+                    <CartElement
+                      location={location.pathname}
+                      {...item}
+                      key={item.product.id}
+                    />
+                  ))}
+                </tbody>
+              </table>
           </div>
-          <div className="w-px h-[50vh] bg-basic mt-10 mx-12"></div>
+          <div className="md:w-px md:h-[50vh] w-[50vh] h-px bg-basic mt-10 mx-12 self-center"></div>
           <div className="flex-1 px-14 flex flex-col shadow-2xl rounded-lg py-4 border border-subColor">
             <h2 className="text-center text-secondary">Your Order</h2>
             <div className="flex justify-between py-2 mt-4 border-b">

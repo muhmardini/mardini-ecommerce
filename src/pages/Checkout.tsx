@@ -10,10 +10,10 @@ const Checkout = () => {
   const items = useCart((state) => state.items);
   return (
     <>
-      <main className="py-22  px-12 flex justify-around mt-14">
-        <div className="flex-4 w-full pr-8 justify-center">
-          <div className="flex flex-col overflow-y-scroll h-[60vh]">
-            <table>
+      <main className="py-22  px-12 flex md:flex-row flex-col justify-around mt-14 items-center">
+        <div className="flex-4 pr-8 justify-center w-120">
+          <div className="flex flex-col overflow-scroll md:overflow-y-scroll md:overflow-x-visible h-[60vh]">
+            <table className="w-120 md:w-full">
               <thead className="border-b sticky top-0 bg-white">
                 <tr>
                   <th className="w-4/6">Products</th>
@@ -57,7 +57,7 @@ const Checkout = () => {
             </label>
           </div>
         </div>
-        <div className="w-px h-[70vh] bg-basic"></div>
+        <div className="md:w-px md:h-[70vh] w-[40vh] my-20 h-px self-center bg-basic"></div>
         <PaymentForm />
       </main>
       <h3 className="text-center text-subColor">

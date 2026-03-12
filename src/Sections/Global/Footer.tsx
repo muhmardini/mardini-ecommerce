@@ -24,25 +24,33 @@ const Footer = () => {
     }
   })
   return (
-    <footer className="bg-black w-full h-[90vh] mt-14 px-8 py-10">
-      <div className="flex">
-        <div>
-          <div className="flex items-center gap-10">
+    <footer className="bg-black w-full py-10 px-6 md:px-12 space-y-8">
+      <div className="flex flex-col md:flex-row">
+        <div className="flex items-center gap-4 md:gap-10 md:hidden">
             <img
-            className="w-16"
+            className="md:size-16 size-12"
             src="/icons/mardini-logo.svg"
             alt="mardini logo"
             />
-            <h1 className="text-background text-4xl">Mardini</h1>
+            <h1 className="text-background text-3xl md:text-4xl">Mardini</h1>
           </div>
-          <div className="w-100 mt-3 flex flex-col gap-5">
+        <div className="hidden md:block">
+          <div className="flex items-center gap-4 md:gap-10">
+            <img
+            className="md:size-16 size-12"
+            src="/icons/mardini-logo.svg"
+            alt="mardini logo"
+            />
+            <h1 className="text-background text-3xl md:text-4xl">Mardini</h1>
+          </div>
+          <div className="hidden md:flex md:w-full lg:w-[520px] flex-col gap-5 mt-3">
             {footerInfo.map((e, index) => (
               <FooterInfo key={index} info={e}/>
             ))}
           </div>
         </div>
-        <div className="h-[60vh] w-[0.5px] ml-12 bg-background self-center"></div>
-        <div className="flex flex-col  ml-10 mt-10 gap-10">
+        <div className=" hidden md:block w-[0.5px] ml-12 bg-background self-center"></div>
+        <div className="flex flex-col ml-10 mt-10 gap-10">
           <nav>
             <ul className="flex flex-col gap-6">
               <li><Link to="/" className="text-subColor hover:text-primary text-2xl">Home</Link></li>
@@ -62,13 +70,13 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="w-full">
+        <div className="w-full hidden md:block">
           <form className="flex flex-col items-center w-full" onSubmit={formik.handleSubmit}>
             <h1 className="text-subColor text-center">Reach Out To Us</h1>
             <div className="field flex flex-col mt-6">
               <label htmlFor="footer-email" className="text-subColor">Your Email</label>
               <input
-              className="border border-subColor rounded-4xl w-120 bg-basic text-subColor h-10 mt-2 pl-4 "
+              className="border border-subColor rounded-2xl w-full md:w-[420px] bg-basic text-subColor h-10 mt-2 pl-4"
               id="footer-email"
               type="email"
               name="footer-email"
@@ -82,7 +90,7 @@ const Footer = () => {
             <div className="field flex flex-col mt-6">
               <label htmlFor="footer-message" className="text-subColor">Your Message</label>
               <textarea
-              className="border border-subColor rounded-4xl w-120 bg-basic text-subColor h-50 mt-2 pl-5 pt-3 resize-none"
+              className="border border-subColor rounded-2xl w-full md:w-[420px] bg-basic text-subColor h-36 mt-2 pl-5 pt-3 resize-none"
               id="footer-message"
               name="message"
               value={formik.values.message}
@@ -93,7 +101,6 @@ const Footer = () => {
               {formik.errors.message && formik.touched.message && formik.errors.message}
               </div>
             </div>
-            {/* make the form with real formik and handle the submit more better */}
             <button className="btn bg-basic border border-subColor text-subColor mt-10 hover:text-basic hover:bg-subColor " type="submit">Submit</button>
           </form>
         </div>

@@ -100,11 +100,11 @@ const MainProducts = () => {
       
 
   return (
-    <section className="flex flex-col mt-10">
-      <div className="flex">
-        <motion.div layout className="min-w-[20%] bg-background border text-secondary h-screen rounded-2xl pl-4 pt-4 shadow-2xl">
+    <section className="flex flex-col mt-10 px-4">
+      <div className="flex flex-col md:flex-row gap-4">
+        <motion.div layout className="md:min-w-[20%] px-4 bg-background h-fit py-8 border text-secondary md:h-screen rounded-2xl md:pl-4 md:pt-4 shadow-2xl">
           <h2 className="text-center mb-10">Filters</h2>
-          <ul className="flex flex-col gap-10">
+          <ul className="flex flex-wrap md:flex-col gap-10 justify-center">
             <li>
               <label className="flex items-center gap-2">
                 <input
@@ -227,8 +227,8 @@ const MainProducts = () => {
             </li>
           </ul>
         </motion.div>
-        <div className="flex flex-col items-center gap-20 h-[120vh] overflow-y-scroll py-10 px-4 border-b border-b-subColor mx-6 rounded-2xl ">
-          <div className="flex-3 grid grid-cols-4 px-10 gap-y-6 gap-x-4 rounded-2xl mt-4 relative">
+        <div className="flex flex-col md:flex-col md:h-[120vh] items-center gap-20 h-fit md:overflow-y-scroll py-10 px-4 border-b border-b-subColor mx-6 rounded-2xl ">
+          <div className="md:flex-3 md:grid md:grid-cols-4 flex flex-col items-center px-10 gap-y-6 gap-x-4 rounded-2xl mt-4">
             {isLoading ? (
               <h1>Loading...</h1> // change it to spinner
             ) : ( filteredProducts.length > 0 ? (
@@ -246,14 +246,14 @@ const MainProducts = () => {
         showedProducts >=
           (filteredProducts.length > 0
             ? filteredProducts.length
-            : data.length)?"hidden":"btn btn-primary w-[20%]"}>Load More</button>
+            : data.length)?"hidden":"btn btn-primary w-50 md:w-1/5"}>Load More</button>
         </div>
       </div>
       <div className="mt-6">
         <h1>Recommended Products</h1>
-        <div className="flex h-50 gap-6 justify-center mt-10">
+        <div className="md:grid flex flex-col items-center md:grid-cols-4 py-4 gap-6 mt-10">
           {data.slice(6,10).map((e:Product)=>(
-            <NavLink className="" to="/SingleProduct"><ProductCard key={e.id} location={location.pathname+"Recommended"} data={e} /></NavLink>
+            <NavLink key={e.id} className="" to="/SingleProduct"><ProductCard location={location.pathname+"Recommended"} data={e} /></NavLink>
           ))}
         </div>
       </div>

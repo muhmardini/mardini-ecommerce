@@ -1,14 +1,14 @@
 const HeroProduct = () => {
   return (
-    <section className='py-24 background-gradient flex h-screen'>
-        <div className='flex-1 pl-8'>
-            <h1 className='text-5xl w-[80%] pt-6'>Lightweight sneakers with a breathable mesh upper and cushioned sole, designed for all-day comfort and easy movement. Perfect for running, walking, or casual wear.</h1>
-            <div className='flex gap-12 mt-16 ml-10'>
+    <section className='py-24 background-gradient flex md:flex-row flex-col-reverse min-h-[calc(100vh - 20px)]'>
+        <div className='md:flex-1 pl-8'>
+            <h1 className='text-3xl md:text-5xl w-full md:w-[80%] pt-6'>Lightweight sneakers with a breathable mesh upper and cushioned sole, designed for all-day comfort and easy movement. Perfect for running, walking, or casual wear.</h1>
+            <div className='flex gap-12 mt-16 ml-10 justify-center items-center'>
                 <button type="button" className='btn btn-secondary  shadow-2xl px-8 shadow-basic hover:shadow-xl'>Add to Cart</button>
                 <button type="button" className='btn btn-background shadow-2xl px-10 shadow-basic hover:shadow-xl'>Buy Now</button>
             </div>
         </div>
-        <div className='relative flex-1'>
+        <div className='relative self-center md:flex-1'>
             <img
             src="images/product-background.png"
             alt="product-background"

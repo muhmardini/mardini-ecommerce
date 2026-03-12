@@ -7,11 +7,11 @@ const SingleProduct = () => {
   const { data = [] } = useProduct();
   const product: Product = data.slice(5, 10)[3];
   return (
-    <main className="flex pt-24 h-screen justify-between items-center ">
+      <main className="flex flex-col md:flex-row pt-24 min-h-screen justify-between items-start md:items-center ">
       <div className="flex flex-col flex-1 px-8">
-        <div className="flex-3  flex justify-center border-b ">
+        <div className="flex-3 flex justify-center border-b ">
           <img
-            className="w-100 "
+            className="w-full max-w-120"
             src={product?.images[0]}
             alt={product?.title}
           />
@@ -19,26 +19,26 @@ const SingleProduct = () => {
         <div className="flex flex-1">
           <div className="flex-2 flex justify-center ml-4">
             <img
-              className="w-60 "
+              className="w-60 max-w-[180px]"
               src={product?.images[1]}
               alt={product?.title + "(2)"}
             />
           </div>
           <div className="flex-2 flex justify-center border-l mr-4">
             <img
-              className="w-60 "
+              className="w-60 max-w-[180px]"
               src={product?.images[2]}
               alt={product?.title + "(3)"}
             />
           </div>
           <div className="flex-1 flex flex-col justify-center items-center border-l ">
             <img
-              className="flex-1 w-30 border-b"
+              className="flex-1 w-[120px] border-b"
               src={product?.images[0]}
               alt={product?.title}
             />
             <img
-              className="flex-1  w-30"
+              className="flex-1  w-[120px]"
               src={product?.images[1]}
               alt={product?.title}
             />
@@ -77,7 +77,7 @@ const SingleProduct = () => {
           </div>
         </div>
         <p className="text-4xl mt-4">$ {product.price }</p>
-        <div className="flex items-center gap-18 justify-center">
+        <div className="flex items-center gap-6 justify-center">
           <button className="btn btn-primary px-12 py-2 text-xl shadow-lg" type="button">Buy Now</button>
           <button className="btn btn-secondary px-12 py-2 text-xl shadow-xl" type="button">Add to Cart</button>
         </div>

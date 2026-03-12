@@ -19,7 +19,7 @@ const CartElement = ({ product, quantity, location }: CartEleProps) => {
           <td className="py-6">
             <div className="flex justify-center">
               <div>
-                <img src={product?.images[0]} className="w-30" alt="" />
+                <img src={product?.images[0]} className="w-30 h-auto" alt="" />
               </div>
               <div className="flex flex-col gap-2">
                 <p className="text-sm w-full">{product?.title}</p>
@@ -84,7 +84,7 @@ const CartElement = ({ product, quantity, location }: CartEleProps) => {
           <td className="py-6">
             <div className="flex justify-center items-center">
               <div>
-                <img src={product?.images[0]} className="w-30" alt="" />
+                <img src={product?.images[0]} className="w-30 h-auto" alt="" />
               </div>
                 <p className="text-sm w-[40%]">{product?.title} - white</p>
             </div>

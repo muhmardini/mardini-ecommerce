@@ -39,9 +39,9 @@ const reasons: Reason[] = [
 
 const ChooseUs = () => {
   return (
-    <ul className='flex flex-wrap justify-around gap-x-2 gap-y-6 w-10/12'>
+    <ul className='flex flex-col md:flex-row flex-wrap justify-around gap-x-2 gap-y-6 md:w-10/12'>
         {reasons.map(i => (
-            <li key={i.id} className='bg-secondary w-1/3 py-8 px-4 flex flex-col gap-4 items-center rounded-4xl group hover:bg-primary transition duration-300' >
+            <li key={i.id} className='bg-secondary md:w-1/3 py-8 px-4 flex flex-col gap-4 items-center rounded-2xl group hover:bg-primary transition duration-300' >
                 <h3 className='text-primary text-center group-hover:text-secondary transition duration-300'>{i.title}</h3>
                 <p className='text-background text-center group-hover:text-basic transition duration-300'>{i.paragraph}</p>
             </li>
