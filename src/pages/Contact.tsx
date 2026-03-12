@@ -15,6 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { motion } from "motion/react";
 import { useForm, type SubmitHandler } from "react-hook-form";
 import { z } from "zod";
 
@@ -59,9 +60,9 @@ export const Contact = () => {
   return (
     <>
       <main className="py-24">
-        <h1 className="text-center">Contact Us</h1>
+        <motion.h1 initial={{opacity:0,y:-20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}} className="text-center">Contact Us</motion.h1>
         <div className="flex md:flex-row flex-col justify-between px-6 w-full pt-8 gap-y-8">
-          <div className="flex-1 flex flex-col items-center gap-8 border md:border-0 shadow-2xl rounded-2xl py-4">
+          <motion.div initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}} className="flex-1 flex flex-col items-center gap-8 border md:border-0 shadow-2xl rounded-2xl py-4">
             <h2 className="text-secondary">Get In Touch</h2>
             <p className="text-center w-1/2">
               We’re always happy to hear from you! Whether you have a question
@@ -172,10 +173,11 @@ export const Contact = () => {
               Our team responds to all messages within 24 hours. We appreciate
               your time and look forward to assisting you!
             </p>
-          </div>
+          </motion.div>
           <div className="md:w-px h-px bg-basic text-center"></div>
           <div className="flex-1 flex justify-center">
-            <form
+            <motion.form
+              initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}}
               onSubmit={handleSubmit(onSubmit)}
               className="bg-secondary px-8 py-8 md:w-10/12 w-full flex flex-col items-center gap-6 rounded-3xl shadow-2xl"
             >
@@ -287,7 +289,7 @@ export const Contact = () => {
                   {isSubmitting ? "Processing..." : "Send"}
                 </button>
               </div>
-            </form>
+            </motion.form>
           </div>
         </div>
       </main>

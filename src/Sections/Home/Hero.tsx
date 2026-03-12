@@ -1,13 +1,15 @@
+import { motion } from "motion/react"
+
 export const Hero = () =>{
     return(
         <section className="relative h-lvh w-full flex justify-center items-center">
             <img className="absolute top-0 left-0 w-full h-full object-cover" src="/images/Hero-image.jpg" alt="t-shirt hero image" />
             <div className="bg-black absolute top-0 left-0 opacity-60 z-1 w-full h-full"></div>
             <div className="absolute z-10 text-center flex flex-col gap-14">
-                <h1 className="text-primary w-96">Elevate fashion for modern living</h1>
+                <motion.h1 initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}} className="text-primary w-96">Elevate fashion for modern living</motion.h1>
                 <div className="flex justify-around gap-6">
-                    <button className="btn-primary btn" type="button">Shop Now</button>
-                    <button className="btn btn-background" type="button">About Us</button>
+                    <motion.button initial={{opacity:0,x:-30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}} className="btn-primary btn" type="button">Shop Now</motion.button>
+                    <motion.button initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}} className="btn btn-background" type="button">About Us</motion.button>
                 </div>
             </div>
         </section>
