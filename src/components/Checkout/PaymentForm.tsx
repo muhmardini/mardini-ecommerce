@@ -113,7 +113,7 @@ const PaymentForm = () => {
   }
   return (
     <form
-      className="md:w-[40%] w-120 flex flex-col justify-start items-start px-20"
+      className="md:w-[40%] w-full flex flex-col justify-start items-start px-4 md:px-20"
       onSubmit={handleSubmit(onSubmit)}
     >
       <h1 className="text-center self-center">Payment Details</h1>
