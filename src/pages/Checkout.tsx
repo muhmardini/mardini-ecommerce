@@ -33,7 +33,7 @@ const Checkout = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex flex-col mt-4 items-start gap-1">
+          <div className="flex flex-col mt-4 items-center gap-1">
             <h3>Shipping Method</h3>
             <label className="flex items-center gap-2 text-sm ml-1">
               <input

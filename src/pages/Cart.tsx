@@ -63,7 +63,7 @@ export const Cart = () => {
               </table>
           </div>
           <div className="md:w-px md:h-[50vh] w-[50vh] h-px bg-basic mt-10 mx-12 self-center"></div>
-          <div className="flex-1 px-14 flex flex-col shadow-2xl rounded-lg py-4 border border-subColor">
+          <div className="flex-1 md:px-14 px-4 flex flex-col shadow-2xl rounded-lg py-4 border border-subColor">
             <h2 className="text-center text-secondary">Your Order</h2>
             <div className="flex justify-between py-2 mt-4 border-b">
               <p>SubTotal ({itemsCount} )</p>
@@ -71,7 +71,7 @@ export const Cart = () => {
             </div>
             <div className="flex flex-col gap-4 py-8 border-b">
               <h3>Delivery</h3>
-              <div className="flex justify-between">
+              <div className="flex gap-4 justify-between">
                 <div className="ml-2 flex flex-col gap-1">
                   <label className="flex items-center gap-2 text-sm">
                     <input
@@ -108,7 +108,7 @@ export const Cart = () => {
                 </div>
               </div>
             </div>
-            <div className="flex justify-between items-center py-4 border-b gap-12">
+            <div className="flex flex-col md:flex-row justify-between items-center py-4 border-b gap-4 md:gap-12">
               <h3 className="flex-1">Tips</h3>
               <div className="flex-4 flex flex-col gap-4 mt-1">
                 <div className="flex gap-8">
@@ -120,7 +120,7 @@ export const Cart = () => {
                       name="tip"
                     />
                     <span className="checkbox-box w-3.25 h-3.25 border-[1.5px] border-subColor rounded-full flex items-center justify-center transition peer-checked:bg-primary peer-checked:border-subColor peer-checked:shadow-[inset_0_0_0_1.5px_white] text-sm"></span>
-                    no Tips
+                    no
                   </label>
                   <label className="flex items-center gap-2 text-sm">
                     <input
