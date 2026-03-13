@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   faArrowRightFromBracket,
   faBars,
@@ -11,6 +11,25 @@ import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useCart } from "../../stores/store";
 export const Header = () => {
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastPoint, setLastPoint] = useState(0);
+
+  useEffect(() => {
+    const hideHeader = () => {
+      const scrollValue = window.scrollY;
+      if(scrollValue > lastPoint){
+        setShowHeader(false)
+      }else{
+        setShowHeader(true)
+      }
+
+      setLastPoint(scrollValue)
+    }
+
+    window.addEventListener('scroll', hideHeader)
+    return () => window.addEventListener('scroll',hideHeader)
+  },[lastPoint])
+
   const navClass = ({ isActive }: { isActive: boolean }) =>
     `text-gradient hover:text-background transition-colors transition-all ${
       isActive ? "active" : "text-gradient hover:text-background"
@@ -21,7 +40,7 @@ export const Header = () => {
   const [dark, setDark] = useState(localStorage.getItem("theme")?true:false);
   const themeRef = useRef(null);
   return (
-    <header className="flex justify-between items-center px-10 md:py-5 py-3 bg-secondary rounded-b-3xl fixed w-full top-0 left-0 z-50 transition-discrete">
+    <header className={`flex justify-between items-center px-10 md:py-5 py-3 bg-secondary rounded-b-3xl fixed w-full top-0 left-0 z-50 transition-discrete ${showHeader? "translate-y-0" : "-translate-y-full"} transition-transform border-background border border-t-0 duration-500`}>
       <div className="flex gap-4">
         <button
           onClick={() => setOpenNav(!openNav)}
@@ -155,5 +174,3 @@ export const Header = () => {
     </header>
   );
 };
-// make the nav appear with animation and smooth
-// add light mode and dark mode

@@ -21,5 +21,3 @@ function App() {
   )
 }
 export default App
-
-// make the media queries

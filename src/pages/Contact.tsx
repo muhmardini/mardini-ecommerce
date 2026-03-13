@@ -301,5 +301,3 @@ export const Contact = () => {
     </>
   );
 };
-
-// add a pop up when submitting is successful

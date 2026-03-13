@@ -7,7 +7,7 @@ const SingleProduct = () => {
   const { data = [] } = useProduct();
   const product: Product = data.slice(5, 10)[3];
   return (
-    <main className="flex flex-col md:flex-row pt-24 min-h-screen justify-between items-start md:items-center ">
+    <main className="flex flex-col md:flex-row py-24 min-h-screen justify-between items-start md:items-center ">
       <div className="flex flex-col md:flex-1 px-8">
         <div className="md:flex-3  flex justify-center border-b ">
           <img

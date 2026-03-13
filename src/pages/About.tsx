@@ -61,4 +61,3 @@ export const About = () => {
     </main>
   );
 };
-// make every section have a photo or a motion design or illustration fits it.

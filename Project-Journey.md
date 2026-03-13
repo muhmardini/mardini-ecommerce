@@ -21,6 +21,12 @@
 - add a local storage with the persist middleware from Zustand
 - if the cart is empty it won't take you to checkout page
 - make the footer appear only in specific pages with the open & closing route component and the Outlet component.
+- make the media query for mobile devices
+- add a pop up when submitting is successful
+- make the header disappear when scrolling down and appearing when scrolling up
+- solve when no items in cart, the heading collapse
+- solve that the headings of the table scroll with content
+
 
 ## Learnt, Solved & Conclusions
 

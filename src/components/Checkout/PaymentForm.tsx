@@ -1,4 +1,5 @@
 import {
+  faCheck,
   faCreditCard,
   faEnvelope,
   faMap,
@@ -9,6 +10,8 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useCart } from "../../stores/store";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const cardLength = {
   visa: 16,
@@ -26,19 +29,14 @@ const formSchema = z
     email: z.email(),
     cardNumber: z.string().regex(/^\d+$/, "Card number must contain digits"),
     paymentMethod: z.enum(["visa", "mastercard", "amex"]),
-    expireYear: z
-      .number()
-      .int()
-      .min(
-        new Date().getFullYear()
-      ),
+    expireYear: z.number().int().min(new Date().getFullYear()),
     expireMonth: z
       .number()
       .int()
       .min(1, "Month must be between 1 and 12")
       .max(12, "Month must be between 1 and 12"),
     cvv: z.string().regex(/^\d+$/, "CVV must contain digits"),
-    cardHolderFName: z.string().min(1,"First Name is required"),
+    cardHolderFName: z.string().min(1, "First Name is required"),
     cardHolderLName: z.string().min(1, "Last name is required"),
     BillingAddress: z.string().min(1, "Address is required"),
     city: z.string().min(1, "city is required"),
@@ -67,19 +65,26 @@ type FormFields = z.infer<typeof formSchema>;
 // add the products to the localstorage so when refresh it won't be gone
 
 const PaymentForm = () => {
-  const items = useCart((state) => state.items)
-  const tip = useCart((state) => state.tip)
-  const itemsCount = useCart((state) => state.itemsCount)
-  const clear = useCart((state) => state.clear)
-  const total = items.reduce((result, item) => (
-    result += item.product.price * item.quantity
-  ),0)
+  const items = useCart((state) => state.items);
+  const tip = useCart((state) => state.tip);
+  const itemsCount = useCart((state) => state.itemsCount);
+  const clear = useCart((state) => state.clear);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const nowDate = new Date();
+  const formattedDate =
+    `${nowDate.getFullYear()}-${String(nowDate.getMonth() + 1).padStart(2, "0")}-${String(nowDate.getDate()).padStart(2, "0")} ` +
+    `${String(nowDate.getHours()).padStart(2, "0")}:${String(nowDate.getMinutes()).padStart(2, "0")}`;
+
+  const total = items.reduce(
+    (result, item) => (result += item.product.price * item.quantity),
+    0,
+  );
   const tax = total * 0.01;
-    const serviceFee = total * 0.04;
-    const deliveryValue = total * 0.08;
-    const subTotal = total + tax + deliveryValue + serviceFee + tip;
-    const vat = subTotal * 0.2
-    const orderTotal = subTotal + vat
+  const serviceFee = total * 0.04;
+  const deliveryValue = total * 0.08;
+  const subTotal = total + tax + deliveryValue + serviceFee + tip;
+  const vat = subTotal * 0.2;
+  const orderTotal = subTotal + vat;
   const {
     register,
     handleSubmit,
@@ -91,11 +96,15 @@ const PaymentForm = () => {
   });
   const onSubmit: SubmitHandler<FormFields> = async (data) => {
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+      setSubmitSuccess(true);
+
       console.log(data);
-      reset();
-      clear();
+      if(submitSuccess === false){
+        reset();
+      }
     } catch {
+      setSubmitSuccess(false);
       setError("cardNumber", {
         type: "manual",
         message: "invalid card Number",
@@ -103,14 +112,14 @@ const PaymentForm = () => {
     }
     // add a pop up window for showing that the order has been submitted and clear the cart when everything works
   };
-  const handleShowCardNum = (e:React.FocusEvent<HTMLInputElement>) => {
+  const handleShowCardNum = (e: React.FocusEvent<HTMLInputElement>) => {
     const cardNumInput = e.currentTarget;
-    cardNumInput.type = 'text'
-  }
-  const handleHideCardNum = (e:React.FocusEvent<HTMLInputElement>) => {
+    cardNumInput.type = "text";
+  };
+  const handleHideCardNum = (e: React.FocusEvent<HTMLInputElement>) => {
     const cardNumInput = e.currentTarget;
-    cardNumInput.type = 'password'
-  }
+    cardNumInput.type = "password";
+  };
   return (
     <form
       className="md:w-[40%] w-full flex flex-col justify-start items-start px-4 md:px-20"
@@ -228,9 +237,7 @@ const PaymentForm = () => {
           <p className="text-red-500">{errors.cardHolderLName.message}</p>
         )}
       </label>
-      <label
-        className="flex flex-col gap-2 w-full pb-6"
-      >
+      <label className="flex flex-col gap-2 w-full pb-6">
         Billing Address
         <div className="w-full">
           <div className="relative flex flex-wrap w-full">
@@ -267,25 +274,59 @@ const PaymentForm = () => {
       </label>
       <div className="flex flex-col w-full gap-2">
         <div className="flex justify-between">
-          <h3 className="text-secondary">SubTotal ({itemsCount} {itemsCount ===1?"Product":"Products"})</h3>
+          <h3 className="text-secondary">
+            SubTotal ({itemsCount} {itemsCount === 1 ? "Product" : "Products"})
+          </h3>
           <h3 className="text-secondary">$ {subTotal.toFixed(2)}</h3>
         </div>
         <div className="flex justify-between">
           <h3 className="text-secondary">Vat (20%)</h3>
-          <h3 className="text-secondary">$ {(vat).toFixed(2)}</h3>
+          <h3 className="text-secondary">$ {vat.toFixed(2)}</h3>
         </div>
         <div className="flex justify-between">
           <h3 className="text-secondary">Order Total</h3>
           <h3 className="text-secondary">$ {orderTotal.toFixed(2)}</h3>
         </div>
-      <button disabled={isSubmitting} className="btn btn-secondary mx-auto w-1/2">
-        {isSubmitting ? "Processing" : `Pay $ ${orderTotal.toFixed(2)}`}
-      </button>
+        <button
+          disabled={isSubmitting}
+          className="btn btn-secondary mx-auto w-1/2"
+        >
+          {isSubmitting ? "Processing" : `Pay $ ${orderTotal.toFixed(2)}`}
+        </button>
+        {submitSuccess && (
+        <div className="bg-basic/70 fixed top-0 right-0 w-screen h-screen z-40">
+          <div className="absolute top-1/2 right-1/2 md:w-1/2 w-4/5 h-3/5 translate-x-1/2 -translate-y-1/2 bg-white outline-4 outline-secondary rounded-3xl border-basic border">
+            <div className="flex flex-col py-6 px-5 gap-8 items-center text-secondary">
+              <h2 className="text-green-500 pb-4 mb-4 text-center border-b border-secondary">
+                <FontAwesomeIcon icon={faCheck} />
+                Order Placed Successfully!
+              </h2>
+              <h2 className="text-primary">
+                Thank you for your purchase form Mardini!
+              </h2>
+              <div>
+                <h3>your order Total: ${orderTotal.toFixed(2)}</h3>
+                <h3>
+                  Expected delivery to Time:{" "}
+                  <span className="text-green-500">7-9 days </span> approximate
+                  depending on the shipping entity
+                </h3>
+                <h3>Order Number: #483920</h3>
+                <h3>Order Date: {formattedDate}</h3>
+              </div>
+              <div className="flex gap-8">
+                <button className="btn btn-secondary text-xs md:text-md" onClick={() => {setSubmitSuccess(false); clear();}} >Track Order</button>
+                <button onClick={() => {setSubmitSuccess(false); clear();}} className="btn btn-primary text-xs md:text-md md:px-9 px-3">
+                  <Link to="/Products">Continue Shopping</Link>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        )}
       </div>
     </form>
   );
 };
-// add a pop up when submitting is successful
-
 
 export default PaymentForm;
