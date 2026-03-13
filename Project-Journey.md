@@ -2,14 +2,8 @@
 
 ## To Do
 
-- modify the scroll bar to match the visual identity
-- make the header disappear when scrolling down and reappear when back to top , and make a button to scroll up
-- do the media query for all the styles
-- make a number appear on the cart nav showing how many items the user have in the cart
-- make an animation for the categories in the home page
-- try to make the path of the url in the single product page show its ID or Its Name or anything else
-- make the animation start when the screen is on it , not before
-- when changing a filter in the product page , even the existing products that match the filter should have an animation
+- modify the scroll bar to match the visual identity (later)
+- when changing a filter in the product page , even the existing products that match the filter should have an animation (I Tried a lot *2 Hours*)
 
 ## Done
 
@@ -26,6 +20,11 @@
 - make the header disappear when scrolling down and appearing when scrolling up
 - solve when no items in cart, the heading collapse
 - solve that the headings of the table scroll with content
+- make the animation start when the screen is on it , not before
+- make the header disappear when scrolling down and reappear when back to top , and make a button to scroll up
+- make a number appear on the cart nav showing how many items the user have in the cart
+- make an animation for the categories in the home page
+- try to make the path of the url in the single product page show its ID or Its Name or anything else (just for the recommended products section in products page)
 
 
 ## Learnt, Solved & Conclusions

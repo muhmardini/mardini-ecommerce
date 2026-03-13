@@ -253,7 +253,7 @@ const MainProducts = () => {
         <h1>Recommended Products</h1>
         <div className="md:grid flex flex-col items-center md:grid-cols-4 py-4 gap-6 mt-10">
           {data.slice(6,10).map((e:Product)=>(
-            <NavLink key={e.id} className="" to="/SingleProduct"><ProductCard location={location.pathname+"Recommended"} data={e} /></NavLink>
+            <NavLink key={e.id} className="" to={`/Products/${e.id}`}><ProductCard location={location.pathname+"Recommended"} data={e} /></NavLink>
           ))}
         </div>
       </div>

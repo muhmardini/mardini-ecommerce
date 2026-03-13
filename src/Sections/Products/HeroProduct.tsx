@@ -1,4 +1,5 @@
 import { motion } from "motion/react"
+import { Link } from "react-router-dom"
 
 const HeroProduct = () => {
   return (
@@ -7,7 +8,7 @@ const HeroProduct = () => {
             <h1 className='text-2xl md:text-start text-center md:text-5xl w-full md:w-[80%] pt-6'>Lightweight sneakers with a breathable mesh upper and cushioned sole, designed for all-day comfort and easy movement. Perfect for running, walking, or casual wear.</h1>
             <div className='flex gap-12 mt-16 md:justify-start  md:ml-10 justify-center items-center'>
                 <button type="button" className='btn btn-secondary  shadow-2xl px-8 shadow-basic hover:shadow-xl'>Add to Cart</button>
-                <button type="button" className='btn btn-background shadow-2xl px-10 shadow-basic hover:shadow-xl'>Buy Now</button>
+                <button type="button" className='btn btn-background shadow-2xl px-10 shadow-basic hover:shadow-xl'><Link to='/Products'>Buy Now</Link></button>
             </div>
         </motion.div>
         <motion.div initial={{opacity:0,x:20}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}} className='relative self-center md:flex-1'>

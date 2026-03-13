@@ -3,9 +3,15 @@ import Sizes from "../components/SingleProduct/Sizes";
 import { useProduct } from "../hooks/useProduct";
 import type { Product } from "../Sections/Home/FeatureProducts";
 import { colors, sizes } from "../constant/colors-sizes";
+import { useParams } from "react-router-dom";
 const SingleProduct = () => {
   const { data = [] } = useProduct();
-  const product: Product = data.slice(5, 10)[3];
+  const {id} = useParams();
+  const productId = Number(id)
+  console.log("id",id, "id");
+  
+  const product: Product = data.find((i:Product) => i.id ===  productId);
+  if (!product) return <div>Loading...</div>;
   return (
     <main className="flex flex-col md:flex-row py-24 min-h-screen justify-between items-start md:items-center ">
       <div className="flex flex-col md:flex-1 px-8">
@@ -26,19 +32,19 @@ const SingleProduct = () => {
           </div>
           <div className="flex-2 flex justify-center border-l mr-4">
             <img
-              className="w-60 max-w-[180px]"
+              className="w-60 max-w-45"
               src={product?.images[2]}
               alt={product?.title + "(3)"}
             />
           </div>
           <div className="flex-1 flex flex-col justify-center items-center border-l ">
             <img
-              className="flex-1 w-[120px] border-b"
+              className="flex-1 w-30 border-b"
               src={product?.images[0]}
               alt={product?.title}
             />
             <img
-              className="flex-1  w-[120px]"
+              className="flex-1  w-30"
               src={product?.images[1]}
               alt={product?.title}
             />
@@ -50,15 +56,15 @@ const SingleProduct = () => {
         <h1 className="text-secondary">{product?.title}</h1>
         <p className="text-wrap md:text-[32px] text-2xl mt-4">{product?.description}</p>
         <div>
-          {product?.tags.map((e) => (
+          {product?.tags.map((e, idx) => (
             <>
-              <div className="px-4 py-1 bg-secondary inline-block rounded-full mr-2">
+              <div key={idx} className="px-4 py-1 bg-secondary inline-block rounded-full mr-2">
                 <p className="text-background">{e}</p>
               </div>
             </>
           ))}
         </div>
-        <div className="flex gap-2 items-start flex-col">
+        <div className="flex gap-2 items-start flex-colv">
           <div className="flex gap-4 items-center ">
             <h2>Colors:</h2>
             <div className="flex gap-2">

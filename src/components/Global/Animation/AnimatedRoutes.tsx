@@ -20,7 +20,7 @@ const AnimatedRoutes = () => {
           <Route path="/" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/Products" element={<PageTransition><Products /></PageTransition>} />
           <Route path="/Favorite" element={<PageTransition><Favorite /></PageTransition>} />
-          <Route path="/singleProduct" element={<PageTransition><SingleProduct /></PageTransition>} />
+        <Route path="/Products/:id" element={<PageTransition><SingleProduct /></PageTransition>} />
         </Route>
         <Route path="/Cart" element={<PageTransition><Cart /></PageTransition>} />
         <Route path="/About" element={<PageTransition><About /></PageTransition>} />
