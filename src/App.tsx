@@ -4,6 +4,7 @@ import ScrollToTop from './components/Global/ScrollToTop'
 
 import {BrowserRouter as Router} from 'react-router-dom'
 import AnimatedRoutes from './components/Global/Animation/AnimatedRoutes'
+import SmallNav from './components/Global/SmallNav'
 
 function App() {
   const client = new QueryClient();
@@ -13,6 +14,7 @@ function App() {
         <Router>
           <ScrollToTop />
           <Header />
+          <SmallNav />
           <AnimatedRoutes />
         </Router> 
       </QueryClientProvider>
