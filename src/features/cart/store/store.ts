@@ -1,12 +1,10 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 import { persist } from "zustand/middleware";
-import type { Product } from "../Sections/Home/FeatureProducts";
+import type { Product } from "@/shared/types/products.type"; 
+import type { CartItem } from "../types/CartItem.type";
 
-export type CartItem = {
-  product: Product;
-  quantity: number;
-};
+
 export const useCart = create<{
   items: CartItem[];
   itemsCount: number;

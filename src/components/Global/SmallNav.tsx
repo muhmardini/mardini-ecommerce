@@ -2,7 +2,7 @@ import { faMoon, faSun, faArrowRightFromBracket } from '@fortawesome/free-solid-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useRef, useState } from 'react'
 import { NavLink } from 'react-router-dom';
-import { useNavStore } from '../../stores/navStore';
+import { useNavStore } from '../../shared/stores/navStore';
 const navClass = ({ isActive }: { isActive: boolean }) =>
     `text-gradient hover:text-background transition-colors transition-all ${
       isActive ? "active" : "text-gradient hover:text-background"

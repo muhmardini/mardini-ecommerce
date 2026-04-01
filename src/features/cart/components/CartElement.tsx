@@ -1,16 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { sizes } from "../../constant/colors-sizes";
-import { useCart, type CartItem, } from "../../stores/store";
+import { sizes } from "@/constant/colors-sizes";
+import { useCart } from "@/features/cart/store/store";
+import type { CartEleProps } from "../types/CartType.type";
 
-type CartEleProps = {
-  location: string;
-} & CartItem;
+
 
 const CartElement = ({ product, quantity, location }: CartEleProps) => {
-  const increaseQty = useCart((state) => state.inc);
-  const decreaseQty = useCart((state) => state.dec);
-  const removeProduct = useCart((state) => state.removeItem);
+  const cartMethods = useCart();
   const ProductTotalPrice = product.price * quantity;
   if (location.toLowerCase() === "/cart") {
     return (
@@ -42,7 +39,7 @@ const CartElement = ({ product, quantity, location }: CartEleProps) => {
             <div className="flex justify-center items-center gap-6">
               <button
                 className="cursor-pointer"
-                onClick={() => increaseQty(product?.id)}
+                onClick={() => cartMethods.inc(product.id)}
                 type="button"
                 title="increase quantity"
               >
@@ -51,7 +48,7 @@ const CartElement = ({ product, quantity, location }: CartEleProps) => {
               <p className="text-lg">{quantity}</p>
               <button
                 className="cursor-pointer"
-                onClick={() => decreaseQty(product?.id)}
+                onClick={() => cartMethods.dec(product?.id)}
                 type="button"
                 title="decrease quantity"
               >
@@ -69,7 +66,7 @@ const CartElement = ({ product, quantity, location }: CartEleProps) => {
               type="button"
               className="cursor-pointer"
               title="deleteItem"
-              onClick={() => removeProduct(product.id)}
+              onClick={() => cartMethods.removeItem(product.id)}
             >
               <FontAwesomeIcon className="text-red-500" icon={faTrash} />
             </button>
@@ -104,7 +101,7 @@ const CartElement = ({ product, quantity, location }: CartEleProps) => {
               type="button"
               className="cursor-pointer"
               title="deleteItem"
-              onClick={() => removeProduct(product.id)}
+              onClick={() => cartMethods.removeItem(product.id)}
             >
               <FontAwesomeIcon className="text-red-500" icon={faTrash} />
             </button>

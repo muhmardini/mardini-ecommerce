@@ -1,4 +1,5 @@
-const commits = ['24/7 customer support', 'A clear refund policy', 'Real-time order tracking', 'Safe and secure payment methods']
+import { commits } from "@/constant/about.constants"
+
 
 const Commitment = () => {
   return (

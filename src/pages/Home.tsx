@@ -1,6 +1,6 @@
-import { Category } from '../Sections/Home/Category'
-import { Hero } from '../Sections/Home/Hero'
-import {FeatureProducts} from "../Sections/Home/FeatureProducts"
+import { Category } from '../components/Home/Category'
+import { Hero } from '../components/Home/Hero'
+import {FeatureProducts} from "../components/Home/FeatureProducts"
 
 export const Home = () => {
     return(

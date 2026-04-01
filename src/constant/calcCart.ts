@@ -1,4 +1,4 @@
-import type { Product } from "../Sections/Home/FeatureProducts";
+import type { Product } from "../components/Home/FeatureProducts";
 
 export const calcCartTotal = async (product: Product) => ({
     tax: product.price * 0.1,

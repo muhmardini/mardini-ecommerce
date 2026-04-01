@@ -1,3 +1,4 @@
+import { useContactForm } from "@/features/contact/hooks/useContactForm";
 import {
   faFacebook,
   faInstagram,
@@ -14,48 +15,13 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "motion/react";
-import { useForm, type SubmitHandler } from "react-hook-form";
-import { z } from "zod";
 
-const contactSchema = z.object({
-  name: z.string().min(1, "Name can't be empty"),
-  email: z.string().min(1, "email can't be empty").refine((val) => val !== "example@example.ex", "must not be the default value"),
-  phone: z.string().trim().min(7).max(15).optional().or(z.literal("")),
-  subject: z.string().optional(),
-  message: z.string().optional(),
-});
 
-type ContactFormFields = z.infer<typeof contactSchema>;
+
 
 export const Contact = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setError,
-    formState: { errors, isSubmitting },
-  } = useForm({
-    defaultValues: {
-      email: "example@example.ex",
-      subject: "Complain, Compliment, Partner up, asking",
-      message: "Good after noon, I have a little problem with the checkout.",
-    },
-    resolver: zodResolver(contactSchema),
-  });
-  const onSubmit: SubmitHandler<ContactFormFields> = async (data) => {
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      console.log(data);
-      reset();
-    } catch {
-      setError("email", {
-        type: "manual",
-        message: "invalid email",
-      });
-    }
-  };
+  const contact = useContactForm();
 
   return (
     <>
@@ -178,7 +144,7 @@ export const Contact = () => {
           <div className="flex-1 flex justify-center">
             <motion.form
               initial={{opacity:0,x:30}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration: 1, ease: "easeInOut"}}
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={contact.handleSubmit}
               className="bg-secondary px-8 py-8 md:w-10/12 w-full flex flex-col items-center gap-6 rounded-3xl shadow-2xl"
             >
               <h1 className="text-center text-primary">Reaching out To us</h1>
@@ -193,14 +159,14 @@ export const Contact = () => {
                     icon={faUser}
                   />
                   <input
-                    {...register("name")}
+                    {...contact.register("name")}
                     className="w-10/12 h-9 ml-2 rounded-full border px-8 border-background bg-subBackground"
                     id="contact-name"
                     type="text"
                     placeholder="Your full name"
                   />
-                  {errors.name && (
-                    <p className="text-red-500">{errors.name.message}</p>
+                  {contact.errors.name && (
+                    <p className="text-red-500">{contact.errors.name.message}</p>
                   )}
                 </label>
                 <label
@@ -213,14 +179,14 @@ export const Contact = () => {
                     icon={faEnvelope}
                   />
                   <input
-                    {...register("email")}
+                    {...contact.register("email")}
                     className="w-10/12 h-9 ml-2 rounded-full border px-8 border-background bg-subBackground"
                     id="contact-email"
                     type="text"
                     placeholder="Your email address"
                   />
-                  {errors.email && (
-                    <p className="text-red-500">{errors.email.message}</p>
+                  {contact.errors.email && (
+                    <p className="text-red-500">{contact.errors.email.message}</p>
                   )}
                 </label>
                 <label
@@ -233,14 +199,14 @@ export const Contact = () => {
                     icon={faPhone}
                   />
                   <input
-                    {...register("phone")}
+                    {...contact.register("phone")}
                     className="w-10/12 h-9 ml-2 rounded-full border px-8 border-background bg-subBackground"
                     id="phone"
                     type="tel"
                     placeholder="Your phone number"
                   />
-                  {errors.phone && (
-                    <p className="text-red-500">{errors.phone?.message}9</p>
+                  {contact.errors.phone && (
+                    <p className="text-red-500">{contact.errors.phone?.message}9</p>
                   )}
                 </label>
                 <label
@@ -253,14 +219,14 @@ export const Contact = () => {
                     icon={faMessage}
                   />
                   <input
-                    {...register("subject")}
+                    {...contact.register("subject")}
                     className="w-10/12 h-9 ml-2 rounded-full border px-8 border-background bg-subBackground"
                     id="subject"
                     type="text"
                     placeholder="What is your Message about"
                   />
-                  {errors.subject && (
-                    <p className="text-red-500">{errors.subject?.message}</p>
+                  {contact.errors.subject && (
+                    <p className="text-red-500">{contact.errors.subject?.message}</p>
                   )}
                 </label>
                 <label
@@ -269,24 +235,24 @@ export const Contact = () => {
                 >
                   Message
                   <textarea
-                    {...register("message")}
+                    {...contact.register("message")}
                     id="message"
                     className="resize-none bg-subBackground border border-background p-2 w-10/12 h-40 rounded-2xl ml-2"
                     placeholder="Your Message"
                   ></textarea>
-                  {errors.message && (
-                    <p className="text-red">{errors.message.message}</p>
+                  {contact.errors.message && (
+                    <p className="text-red">{contact.errors.message.message}</p>
                   )}
                 </label>
-                {errors.root && (
-                  <p className="text-red-500">{errors.root.message}</p>
+                {contact.errors.root && (
+                  <p className="text-red-500">{contact.errors.root.message}</p>
                 )}
                 <button
-                  disabled={isSubmitting}
+                  disabled={contact.isSubmitting}
                   className="btn btn-background"
                   type="submit"
                 >
-                  {isSubmitting ? "Processing..." : "Send"}
+                  {contact.isSubmitting ? "Processing..." : "Send"}
                 </button>
               </div>
             </motion.form>

@@ -1,7 +1,7 @@
 import Colors from "../components/SingleProduct/Colors";
 import Sizes from "../components/SingleProduct/Sizes";
-import { useProduct } from "../hooks/useProduct";
-import type { Product } from "../Sections/Home/FeatureProducts";
+import { useProduct } from "../features/products/hooks/useProduct";
+import type { Product } from "@/shared/types/products.type";
 import { colors, sizes } from "../constant/colors-sizes";
 import { useParams } from "react-router-dom";
 const SingleProduct = () => {

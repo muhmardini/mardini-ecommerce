@@ -1,6 +1,6 @@
-import { useProduct } from "../../hooks/useProduct";
-import { ProductCard } from "../Global/ProductCard";
-import type { Product } from "../../Sections/Home/FeatureProducts";
+import { useProduct } from "../../features/products/hooks/useProduct";
+import { ProductCard } from "@/features/products/components/ProductCard";
+import type { Product } from "@/shared/types/products.type";
 
 type secInfo = {
     headline: string,

@@ -6,8 +6,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useCart } from "../../stores/store";
-import { useNavStore } from "../../stores/navStore";
+import { useCart } from "@/features/cart/store/store";
+import { useNavStore } from "../stores/navStore";
 export const Header = () => {
   const [showHeader, setShowHeader] = useState(true);
   const lastPoint = useRef(0)

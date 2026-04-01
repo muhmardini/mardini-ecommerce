@@ -1,9 +1,5 @@
 
-type Reason = {
-  id: number;
-  title: string;
-  paragraph: string;
-};
+import type { Reason } from "./about.types";
 
 const reasons: Reason[] = [
   {

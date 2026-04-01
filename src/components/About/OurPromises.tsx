@@ -1,4 +1,5 @@
-const Promises = ['High Quality', 'Modern Design', 'Long-lasting Performance', 'Safe Materials', 'Great value for the price']
+import { Promises } from "@/constant/about.constants"
+
 
 const OurPromises = () => {
   return (

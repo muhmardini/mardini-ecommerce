@@ -1,7 +1,7 @@
-import CartElement from "../components/Cart/CartElement";
-import { useCart } from "../stores/store";
+import CartElement from "../features/cart/components/CartElement";
+import { useCart } from "@/features/cart/store/store";
 import { Link, useLocation } from "react-router-dom";
-import PaymentForm from "../components/Checkout/PaymentForm";
+import PaymentForm from "../features/checkout/PaymentForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 

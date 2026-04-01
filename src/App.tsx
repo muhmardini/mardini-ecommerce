@@ -1,9 +1,9 @@
 import {QueryClient , QueryClientProvider} from '@tanstack/react-query'
-import { Header } from './components/Global/Header'
-import ScrollToTop from './components/Global/ScrollToTop'
+import { Header } from './shared/components/Header'
+import ScrollToTop from './app/ScrollToTop'
 
 import {BrowserRouter as Router} from 'react-router-dom'
-import AnimatedRoutes from './components/Global/Animation/AnimatedRoutes'
+import AnimatedRoutes from '@/app/AnimatedRoutes'
 import SmallNav from './components/Global/SmallNav'
 
 function App() {

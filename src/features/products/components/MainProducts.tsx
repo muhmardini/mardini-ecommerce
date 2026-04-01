@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useProduct } from "../../hooks/useProduct";
-import { ProductCard } from "../../components/Global/ProductCard";
-import type { Product } from "../Home/FeatureProducts";
-import NoProducts from "../../components/Products/NoProducts";
+import { useProduct } from "../hooks/useProduct";
+import { ProductCard } from "./ProductCard";
+import type { Product } from "@/shared/types/products.type";
+import NoProducts from "../../../components/Products/NoProducts";
 import {NavLink, useLocation} from 'react-router-dom'
 import { motion } from "motion/react";
 type CategoryKey =

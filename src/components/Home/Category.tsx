@@ -1,6 +1,6 @@
 
 import { motion } from "motion/react"
-import { CatCard } from "../../components/Home/CatCard"
+import { CatCard } from "./CatCard"
 import { categories } from "../../constant/categories-info"
 
 const container = {

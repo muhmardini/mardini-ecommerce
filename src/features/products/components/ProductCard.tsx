@@ -1,8 +1,8 @@
 import { faCartShopping, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import type { Product } from "../../Sections/Home/FeatureProducts";
+import type { Product } from "@/shared/types/products.type";
 import {motion} from 'motion/react'
-import { useCart } from "../../stores/store";
+import { useCart } from "@/features/cart/store/store";
 type productsData = { 
   data: Product;
   location: string;
@@ -46,11 +46,10 @@ export const ProductCard = ({ data, location }: productsData) => {
           <motion.div variants={item2} className="flex flex-col px-1 py-2 flex-1">
             <div className="mb-4 flex flex-col min-w-0">
               <h3 className="text-secondary min-h-12">
-                {data.title || "Lorem ipsum dolor"}{" "}
+                {data.title}
               </h3>
               <p className="w-full line-clamp-2 min-w-0 overflow-hidden">
-                {data.description ||
-                  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore dignissimos optio dolor eum ab sunt distinctio, voluptatum delectus voluptas fugit veniam, corporis minima porro! Porro soluta quas neque nobis provident!"}
+                {data.description}
               </p>
             </div>
             <div className="flex justify-between items-center">
@@ -108,8 +107,7 @@ export const ProductCard = ({ data, location }: productsData) => {
                 {data?.title || "Lorem ipsum dolor"}
               </h3>
               <p className="w-full line-clamp-2 min-w-0 overflow-hidden">
-                {data?.description ||
-                  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore dignissimos optio dolor eum ab sunt distinctio, voluptatum delectus voluptas fugit veniam, corporis minima porro! Porro soluta quas neque nobis provident!"}
+                {data?.description}
               </p>
             </div>
             <div className="flex justify-between items-center">
@@ -183,8 +181,7 @@ export const ProductCard = ({ data, location }: productsData) => {
                 </div>
               </div>
               <p className="w-full line-clamp-2 min-w-0 overflow-hidden">
-                {data.description ||
-                  "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore dignissimos optio dolor eum ab sunt distinctio, voluptatum delectus voluptas fugit veniam, corporis minima porro! Porro soluta quas neque nobis provident!"}
+                {data.description}
               </p>
             </div>
             <div className="flex flex-col">

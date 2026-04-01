@@ -26,7 +26,6 @@
 - make an animation for the categories in the home page
 - try to make the path of the url in the single product page show its ID or Its Name or anything else (just for the recommended products section in products page)
 
-
 ## Learnt, Solved & Conclusions
 
 consider using the generics to solve the problem of different icon sources
@@ -35,3 +34,11 @@ lucide : the component is fixed on the icon its self .
 Font Awesome : the component changed by the icon attribute
 
 - How to write a proper .md files.
+
+## New Edits based on Moaead opinion
+
+change the whole project structure to a featured-based structure
+
+make a separate types folders
+
+make a separate folders for forms
