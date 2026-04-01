@@ -3,8 +3,7 @@ import FooterInfo from "../../components/Global/FooterInfo"
 import {Link} from 'react-router-dom'
 import { faFacebook, faInstagram, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons"
 import { faCopyright } from "@fortawesome/free-solid-svg-icons"
-import {useFormik} from 'formik'
-import {addEmail} from '../../constant/emails'
+import { useFooterForm } from "../hooks/useFooterForm"
 
 const footerInfo:string[] = [
     "A modern e-commerce platform built to demonstrate real-world online shopping experiences, secure payments, and user-friendly design.",
@@ -14,15 +13,7 @@ const footerInfo:string[] = [
     "Subscribe to see how newsletter UI and validation work in a real e-commerce environment.No emails are stored or processed."
 ]
 const Footer = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: "Example@email.com",
-      message: "Hello I'm Ben , I want to ask you about making my own products and added to your E-commerce , waiting for your response."
-    },
-    onSubmit: values => {
-      addEmail({email:values.email,message:values.message})
-    }
-  })
+  const footerForm = useFooterForm();
   return (
     <footer className="bg-black w-full py-10 px-6 md:px-12 space-y-8">
       <div className="flex flex-col md:flex-row">
@@ -43,7 +34,7 @@ const Footer = () => {
             />
             <h1 className="text-background text-3xl md:text-4xl">Mardini</h1>
           </div>
-          <div className="hidden md:flex md:w-full lg:w-[520px] flex-col gap-5 mt-3">
+          <div className="hidden md:flex md:w-full lg:w-130 flex-col gap-5 mt-3">
             {footerInfo.map((e, index) => (
               <FooterInfo key={index} info={e}/>
             ))}
@@ -71,34 +62,32 @@ const Footer = () => {
           </div>
         </div>
         <div className="w-full hidden md:block">
-          <form className="flex flex-col items-center w-full" onSubmit={formik.handleSubmit}>
+          <form className="flex flex-col items-center w-full" onSubmit={footerForm.handleSubmit}>
             <h1 className="text-subColor text-center">Reach Out To Us</h1>
             <div className="field flex flex-col mt-6">
               <label htmlFor="footer-email" className="text-subColor">Your Email</label>
               <input
-              className="border border-subColor rounded-2xl w-full md:w-[420px] bg-basic text-subColor h-10 mt-2 pl-4"
+              {...footerForm.register}
+              className="border border-subColor rounded-2xl w-full md:w-105 bg-basic text-subColor h-10 mt-2 pl-4"
               id="footer-email"
               type="email"
               name="footer-email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              placeholder="example@example.ex"
               />
               <div className="error"></div>
-              {formik.errors.email && formik.touched.email && formik.errors.email}
+              {footerForm.errors.email && <p className="text-red-500">{footerForm.errors.email.message}</p>}
             </div>
             <div className="field flex flex-col mt-6">
               <label htmlFor="footer-message" className="text-subColor">Your Message</label>
               <textarea
-              className="border border-subColor rounded-2xl w-full md:w-[420px] bg-basic text-subColor h-36 mt-2 pl-5 pt-3 resize-none"
+              {...footerForm.register}
+              className="border border-subColor rounded-2xl w-full md:w-105 bg-basic text-subColor h-36 mt-2 pl-5 pt-3 resize-none"
               id="footer-message"
               name="message"
-              value={formik.values.message}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              placeholder="Write Your Message down here"
               />
               <div className="error">
-              {formik.errors.message && formik.touched.message && formik.errors.message}
+              {footerForm.errors.message && <p className="text-red-500">{footerForm.errors.message.message}</p>}
               </div>
             </div>
             <button className="btn bg-basic border border-subColor text-subColor mt-10 hover:text-basic hover:bg-subColor " type="submit">Submit</button>
