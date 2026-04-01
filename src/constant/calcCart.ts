@@ -1,4 +1,4 @@
-import type { Product } from "../components/Home/FeatureProducts";
+import type { Product } from "@/shared/types/products.type";
 
 export const calcCartTotal = async (product: Product) => ({
     tax: product.price * 0.1,
